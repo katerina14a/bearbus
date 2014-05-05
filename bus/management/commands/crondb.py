@@ -49,13 +49,13 @@ def sync():
     for route_index in range(0, dom.getElementsByTagName('route').length):
         route = dom.getElementsByTagName('route')[route_index].toxml().split("\"")[1]
         Route(route_id=route).save()
-    Route(route_id="Perimeter").save()
+    # Route(route_id="Perimeter").save()
 
     #update Stops
     Stops.objects.all().delete()
-    perimeter_schedule = csv.reader(open('/home/kat/PycharmProjects/BearBus/bustimes/static/perimeter.csv'))
-    for row in perimeter_schedule:
-        Stops(intersection=row[0]).save()
+    # perimeter_schedule = csv.reader(open('/home/kat/PycharmProjects/BearBus/bustimes/static/perimeter.csv'))
+    # for row in perimeter_schedule:
+    #     Stops(intersection=row[0]).save()
 
     for route in Route.objects.all():
         url = 'http://webservices.nextbus.com/service/publicXMLFeed?command=routeConfig&a=actransit&r=' + route.route_id
