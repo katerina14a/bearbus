@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bus',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,8 +83,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-
-
 # Parse database configuration from $DATABASE_URL
 import dj_database_url
 # DATABASES['default'] =  dj_database_url.config()
@@ -106,3 +105,6 @@ STATICFILES_DIRS = (
 )
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, '../templates'),)
+
+if os.environ.get('DEVELOPMENT', None):
+    from settings_dev import *
